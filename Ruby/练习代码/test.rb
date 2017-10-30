@@ -71,10 +71,102 @@ hsh.each do |key, value|
     puts "key = #{key}  , value = #{value} "
 end
 
-# 范围类型
-(1 .. 100).each do |n|
+# 范围类型(.. 包含结束，...不包含结束)
+(1 .. 100).each do |n|   # 循环语句
     print n,'   '
     if n == 100
         print "\n"
     end
+end
+
+# 变量
+=begin
+$全局
+@@类
+@实例
+大写字母开头 常数
+
+伪变量
+self 当前方法的接收器对象 
+true，false，nil（代表 undefined值）
+_FILE_  当前源文件名称
+_LINE_ 当前行号
+=end
+
+# 条件判断
+x = 5
+if x > 2
+    puts "x（x = #x）大于2"
+elsif x <2
+    puts "asfdfasf"
+else 
+    puts "不知道x" 
+end
+
+puts "满足条件才执行左边" if x==5
+
+unless x==4
+    puts "条件为假才执行"
+else
+end
+
+$age = 8
+case $age
+    when 0 .. 2
+        puts "婴儿"
+    when 0 ... 8 
+        puts  "小屁孩"
+    else 
+        puts "有点长大了"
+end
+
+foo = false
+bar = true
+quu = false
+case 
+when foo then puts "foo is true"
+when bar then puts "bar is true"
+when quu then puts "quu is true"
+end
+
+
+# 循环
+$i = 1
+$num = 100
+while $i  <= $num do
+    puts "循环语句中 i = #$i"
+    $i += 1
+end
+
+begin
+    puts "总会进行第一次循环 i = #$i"
+    $i += 1
+end while $i < $num
+
+
+until $i  < $num do
+    puts "为假时执行"
+    $num += 1
+end
+
+begin
+    puts "总执行依次，假时执行"
+    $i += 1
+end until $i > $num
+
+for i in 0  ... 5
+ # retry if i > 2 满足条件的话，从头开始循环
+ puts "循环5此"
+end
+
+# 上述循环等价于
+(0 ... 5).each do | i |
+        puts "等价循环5此"
+        if i == 2
+            puts "跳一下"
+            next
+       elsif i == 4 
+          # redo 可重新开始循环
+            break
+        end
 end
